@@ -1,8 +1,8 @@
 #from LarpixParser import geom_dict_loader as DictLoader
-import get_raw_coord as GetCoord
-import coord_transform as CoordTran
-import get_charge as GetCharge
-import util
+from functions import get_charge as GetCharge
+from functions import coord_transform as CoordTran
+from functions import get_raw_coord as GetCoord
+from functions import util as util
 
 def hit_parser_position(t0, packets, geom_dict, run_config, switch_xz=True, **kwargs):
 

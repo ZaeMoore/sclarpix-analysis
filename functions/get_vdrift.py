@@ -2,7 +2,7 @@ import yaml
 import numpy as np
 import math
 
-import units
+from functions import units
 
 
 def v_drift(run_config, drift_model=2):

@@ -4,8 +4,8 @@
 # MeV (include work function, recombination and lifetime correction)
 import numpy as np
 
-import units
-import charge_calibration as Cali
+from functions import units
+from functions import charge_calibration as Cali
 
 def get_calo_ADC(packets_arr):
     return packets_arr['dataword']

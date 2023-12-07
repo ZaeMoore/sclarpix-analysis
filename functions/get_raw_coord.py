@@ -1,8 +1,8 @@
 import numpy as np
 
-import get_vdrift as GetV
-import event_parser as EvtParser
-import util
+from functions import event_parser as EvtParser
+from functions import get_vdrift as GetV
+from functions import util as util
 
 def get_pixel_plane_position(packets_arr, geom_dict, run_config):
     # The io_group (pacman) configuration per module is assumed to be the same. Otherwise the larpix layout dictionary should capture the full larpix layout of the multi-module detector. 
