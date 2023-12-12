@@ -29,14 +29,9 @@ def get_t0_event_unpadded(vertices, run_config, event_parser='event_id', time_pa
         dt_window = 0
         print("Found no 'beam_duration' in the configuration file")
 
-    if time_parser in vertices.dtype.names and not (np.all(vertices[time_parser] == 0)):
-        uniq_ev, counts = np.unique(vertices[event_parser], return_counts=True)
-        idx = np.cumsum(counts) - 1
-        t0_ev = np.take(vertices[time_parser], idx) + dt_window *0.5
-        if len(uniq_ev) != len(np.unique(vertices[time_parser])):
-            raise ValueError("The number of 'event_id' and 't_event' do not match!")
-    else:
-        raise ValueError("True event time is not given!")
+    uniq_ev, counts = np.unique(vertices[event_parser], return_counts=True)
+    idx = np.cumsum(counts) - 1
+    t0_ev = np.take(vertices[time_parser], idx) + dt_window *0.5
 
     return t0_ev
 
@@ -52,12 +47,10 @@ def get_eventid(vertices, event_parser='event_id'):
         return np.arange(np.min(evt_ids), np.max(evt_ids)+1, 1)
 
 def get_t0_event(vertices, run_config, event_parser='event_id', time_parser='t_event'):
-    max_evtid = np.max(vertices[event_parser]) - np.min(vertices[event_parser]) + 1
+    max_evtid = np.max(vertices[event_parser]) + 1
     t0_ev = np.full(max_evtid, -1)
 
     evt_id_unpadded = get_eventid_unpadded(vertices, event_parser)
-    if np.min(evt_id_unpadded) >= len(evt_id_unpadded):
-        evt_id_unpadded = get_eventid_unpadded(vertices, event_parser) % np.min(evt_id_unpadded)
 
     t0_unpadded = get_t0_event_unpadded(vertices, run_config, event_parser, time_parser)
 
