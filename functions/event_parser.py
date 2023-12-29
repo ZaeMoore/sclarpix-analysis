@@ -56,7 +56,7 @@ def get_t0_event(vertices, run_config, event_parser='event_id', time_parser='t_e
 
     np.put(t0_ev, evt_id_unpadded, t0_unpadded)
 
-    return t0_ev
+    return t0_ev * 10
 
 
 def packet_to_eventid(assn, tracks, event_parser='event_id'):
