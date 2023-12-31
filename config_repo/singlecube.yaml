@@ -42,7 +42,7 @@ time_window: 189.1 # us
 
 # Charge geometry parameters
 tpc_offsets: # cm
-  - [15.13, 0, 0]
+  - [-15.13, 0, 0]
 tile_map:
   - [[1]]
 module_to_io_groups:
