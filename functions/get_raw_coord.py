@@ -31,13 +31,6 @@ def get_pixel_plane_position(packets_arr, geom_dict, run_config):
  
     return x, y, z, direction
 
-def get_t_drift(t0, packets_arr, run_config):
-
-    t = packets_arr['timestamp'].astype(float) * run_config['CLOCK_CYCLE']
-    t_drift = t - t0 # us
-
-    return t_drift
-
 
 def get_hit3D_position_tdrift(t0,  packets, packets_arr, geom_dict, run_config, **kwargs):
 
@@ -49,12 +42,10 @@ def get_hit3D_position_tdrift(t0,  packets, packets_arr, geom_dict, run_config, 
     else:
         v_drift = GetV.v_drift(run_config, **kwargs)
     #vdrift is in mm/us
+    #t = packets_arr['timestamp'].astype(float) * run_config['CLOCK_CYCLE']
+    t = packets_arr['timestamp'].astype(float)
+    t_drift = (t - t0) * run_config['CLOCK_CYCLE'] #us
 
-    t = packets['timestamp'].astype(float)
-    t_drift = t - t0 
-
-    #t_drift = get_t_drift(t0, packets_arr, run_config)
-
-    z = z_anode + direction * t_drift * v_drift
+    z = direction * t_drift * v_drift - z_anode
 
     return x, y, z, t_drift, v_drift
