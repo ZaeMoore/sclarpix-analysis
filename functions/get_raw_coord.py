@@ -20,9 +20,9 @@ def get_pixel_plane_position(packets_arr, geom_dict, run_config):
         xyz = geom_dict[io_group, packet['io_channel'], packet['chip_id'], packet['channel_id']]
         
         # Note tpc_centers is ordered by z, y, x, as in larnd-sim config files
-        x_offset = tpc_centers[module_id][2]*10
-        y_offset = tpc_centers[module_id][1]*10
-        z_offset = tpc_centers[module_id][0]*10
+        x_offset = tpc_centers[module_id][2]*10 #mm
+        y_offset = tpc_centers[module_id][1]*10 #mm
+        z_offset = tpc_centers[module_id][0]*10 #mm
         
         x.append(xyz[0] + x_offset)
         y.append(xyz[1] + y_offset)
@@ -42,10 +42,12 @@ def get_hit3D_position_tdrift(t0,  packets, packets_arr, geom_dict, run_config, 
     else:
         v_drift = GetV.v_drift(run_config, **kwargs)
     #vdrift is in mm/us
-    #t = packets_arr['timestamp'].astype(float) * run_config['CLOCK_CYCLE']
-    t = packets_arr['timestamp'].astype(float)
-    t_drift = (t - t0) * run_config['CLOCK_CYCLE'] #us
 
-    z = direction * t_drift * v_drift - z_anode
+    #t0 is us, timestamps is "ticks" = 0.1us
+    t = packets_arr['timestamp'].astype(float) * run_config['CLOCK_CYCLE'] #us
+    #t_drift = (t - t0) #us
+    t_drift = (t - t0) / 5.5
+
+    z = direction * t_drift * v_drift + z_anode #mm
 
     return x, y, z, t_drift, v_drift
