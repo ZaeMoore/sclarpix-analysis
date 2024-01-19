@@ -79,9 +79,11 @@ def packet_to_eventid(assn, tracks, event_parser='event_id'):
         array of event_id.
         `len(event_ids)` equals to `len(packets)`
     '''
-    track_ids = assn['track_ids'].max(axis=-1)
+    track_ids = assn['segment_ids'].max(axis=-1)
 
     event_ids = np.full_like(track_ids, -1, dtype=int)
+    #event_ids = assn['event_ids'].max(axis=-1)
+
     mask = track_ids != -1
 
     event_ids[mask] = tracks[event_parser][track_ids[mask]] 

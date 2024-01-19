@@ -34,7 +34,7 @@ W_ion: 23.6e-6
 
 # Charge simulation parameters
 drift_length: 30.27225 # cm
-time_interval: [0, 200.] # us
+time_interval: [0, 2000.] # us
 response_sampling: 0.1 # us
 reponse_bin_size: 0.04434 # cm
 time_padding: 190 # us

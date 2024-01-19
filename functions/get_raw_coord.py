@@ -46,7 +46,7 @@ def get_hit3D_position_tdrift(t0,  packets, packets_arr, geom_dict, run_config, 
     #t0 is us, timestamps is "ticks" = 0.1us
     t = packets_arr['timestamp'].astype(float) * run_config['CLOCK_CYCLE'] #us
     #t_drift = (t - t0) #us
-    t_drift = (t - t0) / 5.5
+    t_drift = (t - t0) / 5.6
 
     z = direction * t_drift * v_drift + z_anode #mm
 
