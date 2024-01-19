@@ -17,7 +17,7 @@ def v_drift(run_config, drift_model=2):
     '''
 
     # get electric field from run data
-    e_field = run_config['efield'] 
+    e_field = run_config['efield'] / 10. #Convert to kV/mm
 
     # get temperature from run data
     temp = run_config['temp']
