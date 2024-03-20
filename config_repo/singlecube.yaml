@@ -1,21 +1,8 @@
-#: Front-end gain in :math:`mV/ke-`
-GAIN: 4 # mV / (1e3 * e)
-#: Common-mode voltage in :math:`mV`
-V_CM: 288 # mV
-#: Reference voltage in :math:`mV`
-V_REF: 1300 # mV
-#: Pedestal voltage in :math:`mV`
-V_PEDESTAL: 580 # mV
-#: Number of ADC counts
-ADC_COUNTS: 256
-#: Clock cycle time in :math:`\mu s`
-CLOCK_CYCLE: 0.1
-
 # Argon properties
 temperature: 87.17 # K
 lar_density: 1.38 # g/cm^3
 e_field: 0.50 # kV/cm
-lifetime: 2.6e+3 # us
+lifetime: 1.6e+2 # us 2.2e+3 
 long_diff: 4.0e-6 # cm * cm / us
 tran_diff: 8.8e-6 # cm * cm / us
 drift_model: 2 # 1: LArSoft suite 2: BNL mobility model
@@ -31,6 +18,19 @@ birks_Ab: 0.800
 birks_kb: 0.0486 # g/cm2/MeV Amoruso, et al NIM A 523 (2004) 275
 #: Average energy expended per ion pair in LAr in :math:`MeV` from Phys. Rev. A 10, 1452
 W_ion: 23.6e-6
+
+#: Front-end gain in :math:`mV/ke-`
+GAIN: 4 # mV / (1e3 * e)
+#: Common-mode voltage in :math:`mV`
+V_CM: 288 # mV
+#: Reference voltage in :math:`mV`
+V_REF: 1300 # mV
+#: Pedestal voltage in :math:`mV`
+V_PEDESTAL: 580 # mV
+#: Number of ADC counts
+ADC_COUNTS: 256
+#: Clock cycle time in :math:`\mu s`
+CLOCK_CYCLE: 0.1
 
 # Charge simulation parameters
 drift_length: 30.27225 # cm

@@ -46,14 +46,14 @@ def get_run_config(run_config_path, use_builtin = False):
 
     run_config['response_sampling'] = run_yaml['response_sampling'] #us
 
-    #run_config['lar_density'] = run_yaml['lar_density'] # g/cm^3
+    run_config['lar_density'] = run_yaml['lar_density'] # g/cm^3
 
-    #run_config['box_alpha'] = run_yaml['box_alpha'] 
-    #run_config['box_beta'] = run_yaml['box_beta'] 
-    #run_config['birks_Ab'] = run_yaml['birks_Ab'] 
-    #run_config['birks_kb'] = run_yaml['birks_kb'] 
+    run_config['box_alpha'] = run_yaml['box_alpha'] 
+    run_config['box_beta'] = run_yaml['box_beta'] 
+    run_config['birks_Ab'] = run_yaml['birks_Ab'] 
+    run_config['birks_kb'] = run_yaml['birks_kb'] 
 
-    #run_config['W_ion'] = run_yaml['W_ion'] #MeV
+    run_config['W_ion'] = run_yaml['W_ion'] #MeV
 
     run_config['lifetime'] = run_yaml['lifetime'] #us
 
